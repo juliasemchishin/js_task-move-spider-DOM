@@ -5,12 +5,17 @@ document.addEventListener('click', (e) => {
   const wall = document.querySelector('.wall');
 
   const wallRect = wall.getBoundingClientRect();
-  const borderWidth = 10;
+  const wallStyle = window.getComputedStyle(wall);
 
-  const left = wallRect.left + borderWidth;
-  const top1 = wallRect.top + borderWidth;
-  const right = wallRect.right - borderWidth;
-  const bottom = wallRect.bottom - borderWidth;
+  const borderLeftWidth = parseFloat(wallStyle.borderLeftWidth);
+  const borderTopWidth = parseFloat(wallStyle.borderTopWidth);
+  const borderRightWidth = parseFloat(wallStyle.borderRightWidth);
+  const borderBottomWidth = parseFloat(wallStyle.borderBottomWidth);
+
+  const left = wallRect.left + borderLeftWidth;
+  const top1 = wallRect.top + borderTopWidth;
+  const right = wallRect.right - borderRightWidth;
+  const bottom = wallRect.bottom - borderBottomWidth;
 
   if (
     e.clientX < left ||
